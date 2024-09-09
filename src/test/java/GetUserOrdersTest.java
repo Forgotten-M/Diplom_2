@@ -1,5 +1,4 @@
 import io.qameta.allure.junit4.DisplayName;
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import steps.OrderSteps;
 import org.apache.http.HttpStatus;
@@ -9,21 +8,18 @@ import org.junit.Test;
 import model.User;
 import steps.UserSteps;
 
-import static utils.Url.*;
-
 import utils.Generator;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
 
-public class GetUserOrdersTest {
+public class GetUserOrdersTest extends BaseTest {
 
     User user;
     String accessToken;
 
     @Before
     public void setUp() {
-        RestAssured.baseURI = BASE_URL;
         user = Generator.generateUser();
     }
 

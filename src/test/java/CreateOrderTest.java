@@ -1,5 +1,5 @@
 import io.qameta.allure.junit4.DisplayName;
-import io.restassured.RestAssured;
+
 import io.restassured.response.Response;
 import model.Order;
 import steps.OrderSteps;
@@ -11,8 +11,6 @@ import org.junit.Test;
 import model.User;
 import steps.UserSteps;
 
-import static utils.Url.*;
-
 import utils.Generator;
 
 import java.util.ArrayList;
@@ -21,18 +19,18 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
-public class CreateOrderTest {
+public class CreateOrderTest extends BaseTest {
 
-    User user;
-    Order order;
-    String accessToken;
-    int ingredientSublistSize;
-    List<String> ingredients;
-    List<String> allIngredients;
+    private User user;
+    private Order order;
+    private String accessToken;
+    private int ingredientSublistSize;
+    private List<String> ingredients;
+    private List<String> allIngredients;
 
     @Before
     public void setUp() {
-        RestAssured.baseURI = BASE_URL;
+
         allIngredients = OrderSteps.getAllIngredients();
         user = Generator.generateUser();
         Response response = UserSteps.createUser(user);
